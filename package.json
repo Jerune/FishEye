@@ -1,0 +1,25 @@
+{
+  "name": "front-end-fisheye",
+  "version": "1.0.0",
+  "description": "Application for Freelance photographers to showcase their work and get contacted by potential clients",
+  "main": "render/app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "sass": "sass --watch ./render/style.scss:./render/main.css --style compressed",
+    "prefix": "postcss ./render/main.css --use autoprefixer -d ./styles"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jerune/FishEye.git"
+  },
+  "author": "Jeroen van de Sanden",
+  "license": "ISC",
+  "browserslist": "last 4 versions",
+  "bugs": {
+    "url": "https://github.com/Jerune/FishEye/issues"
+  },
+  "homepage": "https://github.com/Jerune/FishEye#readme",
+  "devDependencies": {
+    "eslint": "^8.13.0"
+  }
+}
