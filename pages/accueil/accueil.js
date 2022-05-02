@@ -1,5 +1,5 @@
-import { photographerFactory } from '../photographer/factories/photographer.js';
-    
+import { Card } from '../../components/card/card.js';
+
 async function getPhotographers() {
     const response = await fetch('/data/photographers.json');
     const photographers = await response.json();
@@ -8,11 +8,8 @@ async function getPhotographers() {
 
 async function displayData(photographers) {
     const photographersSection = document.querySelector('.photographer_section');
-
-    photographers.forEach((photographer) => {
-        const photographerModel = photographerFactory(photographer);
-        const userCardDOM = photographerModel.getUserCardDOM();
-        photographersSection.appendChild(userCardDOM);
+    photographers.forEach(photographer => {
+        new Card(photographer, photographersSection);
     });
 }
 
@@ -21,7 +18,5 @@ async function init() {
     const { photographers } = await getPhotographers();
     displayData(photographers);
 }
-    
-//export{getPhotographers, displayData, init}
 
 init();
