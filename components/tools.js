@@ -7,4 +7,10 @@ function removeSpace(str){
     return withoutSpaces.split('!').join('');
 }
 
-export { expose, removeSpace };
+async function getPhotoData() {
+    const response = await fetch('/data/photographers.json');
+    const photographers = await response.json();
+    return photographers;
+}
+
+export { expose, removeSpace, getPhotoData };

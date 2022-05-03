@@ -1,0 +1,127 @@
+#contact_modal {
+    display: none;
+}
+
+.photographer-header {
+    background-color: #FAFAFA;
+    height: 300px;
+    margin: 0 100px;
+}
+
+.contact_button {
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    padding: 11px;
+    width: 170px;
+    height: 70px;
+    border: none;
+    background-color: #901C1C;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.photo-overview{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 50px 100px;
+}
+
+.photo_card{
+    font-size: 1.375rem; // 22px
+    color: $color-primary;
+    a{
+        display: block;
+        width: 350px;
+        height: 300px;
+        overflow: hidden;
+    }
+    
+    img{
+        object-fit: cover;
+        object-position: center;
+    }
+
+    &_title{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 10px 0 30px 0;
+        p{
+            margin: 0;
+        }
+    }
+    
+    &_likes{
+        font-weight: 500;
+        font-style: normal;
+        &::after {
+            content: "\f004";
+            font-size: 1.125rem;
+            -webkit-font-smoothing: antialiased;
+            display: var(--fa-display,inline-block);
+            font-style: normal;
+            font-variant: normal;
+            line-height: 1;
+            text-rendering: auto;
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+        }
+    }
+}
+
+
+.modal {
+    border-radius: 5px;
+    background-color: #DB8876;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 35px;
+    margin: auto;
+}
+
+.modal header {
+    justify-content: space-between;
+    width: 100%;
+}
+
+.modal header img {
+    cursor: pointer;
+}
+
+.modal header h2 {
+    font-size: 64px;
+    font-weight: normal;
+    text-align: center;
+}
+
+form {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+form label {
+    color: #312E2E;
+    font-size: 36px;
+}
+
+form div {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: self-start;
+    margin-bottom: 26px;
+}
+
+form input {
+    width: 100%;
+    height: 68px;
+    border: none;
+    border-radius: 5px;
+}

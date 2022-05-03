@@ -1,22 +1,19 @@
-import { Card } from '../../components/card/card.js';
+import { PhotographerCard } from '../../components/cards/photographerCard.js';
+import { getPhotoData } from '../../components/tools.js';
 
-async function getPhotographers() {
-    const response = await fetch('/data/photographers.json');
-    const photographers = await response.json();
-    return photographers;
-}
 
-async function displayData(photographers) {
+
+async function displayData(photographers, type) {
     const photographersSection = document.querySelector('.photographer_section');
     photographers.forEach(photographer => {
-        new Card(photographer, photographersSection);
+        new PhotographerCard(photographer, type, photographersSection);
     });
 }
 
 async function init() {
     // Récupère les datas des photographes
-    const { photographers } = await getPhotographers();
-    displayData(photographers);
+    const { photographers } = await getPhotoData();
+    displayData(photographers, 'photographer');
 }
 
 init();
