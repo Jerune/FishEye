@@ -5,7 +5,11 @@ class PhotoCard {
         this.id = data.id;
         this.photographerId = data.photographerId;
         this.title = data.title;
-        this.imgName = data.image;
+        if (data.image){
+            this.imgName = data.image;
+        } else {
+            this.vidName = data.video;
+        }
         this.likes = data.likes;
         this.isLiked = false;
         this.dateCreated = data.date;
@@ -23,7 +27,7 @@ class PhotoCard {
     buildPhotoTemplate() {
         this.DOM.innerHTML = `
         <a href="#">
-            <img src="/assets/photos/thumbs/${this.imgName}" alt="">
+            <img src="/assets/photos/thumbs/${this.imgName}" alt=""></img>
         </a>
         <aside class="photo_card_title">
             <p>${this.title}</p>
@@ -31,6 +35,9 @@ class PhotoCard {
         </aside>
     `;
     }
+    // <video height="300">
+    // <source src="/assets/videos/${this.vidName}" type="video/mp4">
+    // </video>
 
     addCard() {
         this.exposeCard();

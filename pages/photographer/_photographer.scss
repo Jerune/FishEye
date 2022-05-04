@@ -6,6 +6,35 @@
     background-color: #FAFAFA;
     height: 300px;
     margin: 0 100px;
+    padding: 70px 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    img{
+        border-radius: 50%;
+    }
+    h1{
+        color: $color-secondary;
+        font-size: 4rem;
+        font-weight: 400;
+        line-height: 1.3;
+        margin: 0;
+    }
+
+    &_location{
+        font-size: 1.5rem;
+        line-height: 1.3;
+        margin: 0 0 19px 0;
+        color: $color-primary;
+    }
+
+    &_tagline{
+        font-size: 1.125rem;
+        line-height: 1.3;
+        margin: 0;
+        color: $grayscale-text;
+    }
 }
 
 .contact_button {
@@ -32,7 +61,7 @@
     font-size: 1.375rem; // 22px
     color: $color-primary;
     a{
-        display: block;
+        display: flex;
         width: 350px;
         height: 300px;
         overflow: hidden;
@@ -40,7 +69,8 @@
     
     img{
         object-fit: cover;
-        object-position: center;
+        min-width: 100%;
+        min-height: 100%;
     }
 
     &_title{
@@ -50,6 +80,10 @@
         margin: 10px 0 30px 0;
         p{
             margin: 0;
+            text-overflow: ellipsis;
+            overflow: hidden; 
+            width: 295px; 
+            white-space: nowrap;
         }
     }
     
@@ -70,7 +104,6 @@
         }
     }
 }
-
 
 .modal {
     border-radius: 5px;

@@ -1,41 +1,38 @@
 import { expose, removeSpace } from '../tools.js';
 
 class PhotographerCard {
-    constructor(data, type, DOMtarget) {
-        this.DOM = document.createElement('article');
-        this.type = type;
-        if(type === 'photographer'){
-            this.name = data.name;
-            this.id = data.id;
-            this.city = data.city;
-            this.country = data.country;
-            this.tagline = data.tagline;
-            this.price = data.price;
-            this.portrait = data.portrait;
-            this.DOM.className = 'photographer_card';        
-        } else if(type === 'photo'){
-            this.id = data.id;
-            this.photographerId = data.photographerId;
-            this.title = data.title;
-            this.imgName = data.image;
-            this.likes = data.likes;
-            this.isLiked = false;
-            this.dateCreated = data.date;
-            this.photoPrice = data.price;
-            this.DOM.className = 'photo_card';
+    constructor(data, page, DOMtarget) {
+        this.pageType = page;
+        this.name = data.name;
+        this.id = data.id;
+        this.city = data.city;
+        this.country = data.country;
+        this.tagline = data.tagline;
+        this.price = data.price;
+        this.portrait = data.portrait;
+        if(this.pageType === 'accueil'){
+            this.DOM = document.createElement('article');
+            this.DOM.className = 'photographer_card';
+        } else if (this.pageType === 'photographer-detail'){
+            this.DOM = DOMtarget;
         }
         this.addCard();
-        DOMtarget.appendChild(this.DOM);
+        if(this.pageType === 'accueil'){ 
+            DOMtarget.appendChild(this.DOM);
+        } 
+        // else if(this.pageType === 'photographer-detail'){
+        //     this.updateBanner();
+        // }
     }
 
     exposeCard() {
         expose('card_' + removeSpace(this.name), this);
     }
 
-    buildPhotographerTemplate() {
+    buildHomeTemplate() {
         this.DOM.innerHTML = `
         <a href="/pages/photographer/photographer.html?${this.id}" aria-label="${this.name}">
-            <img src='assets/photographers/${this.portrait}' alt="">
+            <img class="portrait" src='assets/photographers/${this.portrait}' alt="">
             <h2>${this.name}</h2>
         </a>
         <p class="photographer_card_location">${this.city}, ${this.country}</p>
@@ -44,24 +41,24 @@ class PhotographerCard {
     `;
     }
 
-    buildPhotoTemplate() {
+    buildPhotographerTemplate() {
         this.DOM.innerHTML = `
-        <a href="#">
-            <img src="/assets/photos/${this.imgName}" alt="">
-        </a>
-        <aside>
-            <p class="photo_card_title">${this.title}</p>
-            <i class="photo_card_likes">${this.likes}</i>
-        </aside>
-    `;
+        <div>
+            <h1>${this.name}</h1>
+            <p class="photographer-header_location">${this.city}, ${this.country}</p>
+            <p class="photographer-header_tagline">${this.tagline}</p>
+        </div>
+        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+        <img class="portrait" src='../../assets/photographers/${this.portrait}' alt="${this.name}">
+        `;
     }
 
     addCard() {
         this.exposeCard();
-        if(this.type === 'photographer'){
+        if(this.pageType === 'accueil'){
+            this.buildHomeTemplate();
+        } else if (this.pageType === 'photographer-detail'){
             this.buildPhotographerTemplate();
-        } else if (this.type === 'photo'){
-            this.buildPhotoTemplate();
         }
     }
 
