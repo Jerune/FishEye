@@ -1,6 +1,6 @@
 import { expose, removeSpace } from '../tools.js';
 
-class PhotographerCard {
+export default class PhotographerCard {
     constructor(data, page, DOMtarget) {
         this.pageType = page;
         this.name = data.name;
@@ -16,18 +16,17 @@ class PhotographerCard {
         } else if (this.pageType === 'photographer-detail'){
             this.DOM = DOMtarget;
         }
-        this.addCard();
+        expose('card_' + removeSpace(this.name), this);
+        if(this.pageType === 'accueil'){
+            this.buildHomeTemplate();
+        } else if (this.pageType === 'photographer-detail'){
+            this.buildPhotographerTemplate();
+        }
         if(this.pageType === 'accueil'){ 
             DOMtarget.appendChild(this.DOM);
         } 
-        // else if(this.pageType === 'photographer-detail'){
-        //     this.updateBanner();
-        // }
     }
 
-    exposeCard() {
-        expose('card_' + removeSpace(this.name), this);
-    }
 
     buildHomeTemplate() {
         this.DOM.innerHTML = `
@@ -52,25 +51,4 @@ class PhotographerCard {
         <img class="portrait" src='../../assets/photographers/${this.portrait}' alt="${this.name}">
         `;
     }
-
-    addCard() {
-        this.exposeCard();
-        if(this.pageType === 'accueil'){
-            this.buildHomeTemplate();
-        } else if (this.pageType === 'photographer-detail'){
-            this.buildPhotographerTemplate();
-        }
-    }
-
-    // getLikesCount() {
-    //     return this.isLiked ? this.likes + 1 : this.likes;
-    // }
-
-    // Use for onclick="card_${removeSpace(this.name)}.click()"
-    // click() {
-    //     this.isLiked = !this.isLiked;
-    //     this.buildTemplate();
-    // }
 }
-
-export { PhotographerCard };

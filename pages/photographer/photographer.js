@@ -1,21 +1,30 @@
-import { PhotographerCard } from '../../components/cards/photographerCard.js';
-import { PhotoCard } from '../../components/cards/photoCard.js';
+// Imports
+import PhotographerCard from '../../components/cards/photographerCard.js';
+import PhotoCard from '../../components/cards/photoCard.js';
 import { getPhotoData } from '../../components/tools.js';
-import { updateBanner } from '../../components/banner/banner.js';
+import { initBanner, updateBanner } from '../../components/banner/banner.js';
+import VideoCard from '../../components/cards/videoCard.js';
+let totalLikes;
 
+// Displaying the data on the page
 async function displayData(media, photographers) {
+    
     const photoOverviewSection = document.querySelector('.photo-overview');
     const photographerHeader = document.querySelector('.photographer-header');
     const urlSearchQuery = location.search.slice(1);
-    let totalLikes = 0;
-    let selectedPhotographer;
+    
+    // Show images & videos for selected photographer
+    totalLikes = 0;
     media.forEach(photo => {
         if (urlSearchQuery == photo.photographerId) {
-            new PhotoCard(photo, photoOverviewSection);
+            if (photo.image) new PhotoCard(photo, photoOverviewSection);
+            else new VideoCard(photo, photoOverviewSection)
             totalLikes += photo.likes;
         }
-        return totalLikes;
     });
+    
+    // Show data of selected photographer
+    let selectedPhotographer;
     photographers.forEach(photographer => {
         if (urlSearchQuery == photographer.id) {
             selectedPhotographer = photographer;
@@ -23,13 +32,26 @@ async function displayData(media, photographers) {
         }
     });
 
-    updateBanner(selectedPhotographer, totalLikes);
+    // Show total likes and daily rate for selected photographer in footer banner
+    initBanner(selectedPhotographer, totalLikes);
 }
 
 async function init() {
-    // Récupère les datas des images
     const { media, photographers } = await getPhotoData();
     displayData(media, photographers);
 }
 
+/**
+ * [updateLikes description]
+ *
+ * @param   {Boolean}  increment  [increment description]
+ *
+ * @return  {void}             [return description]
+ */
+function updateLikes(increment){
+    totalLikes = increment ? totalLikes+1 : totalLikes-1;
+    updateBanner(totalLikes);
+}
 init();
+
+export { updateLikes };

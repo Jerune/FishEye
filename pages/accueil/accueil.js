@@ -1,4 +1,4 @@
-import { PhotographerCard } from '../../components/cards/photographerCard.js';
+import PhotographerCard from '../../components/cards/photographerCard.js';
 import { getPhotoData } from '../../components/tools.js';
 
 
