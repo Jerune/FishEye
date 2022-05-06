@@ -1,14 +1,16 @@
 // DOM Elements
-const likePriceBanner = document.querySelector('.likes_price_banner');
+const footerBanner = document.querySelector('.likes_price_banner');
+const contactFormHeader = document.querySelector('.contactFormHeader');
 
 // Functions
-function initBanner(photographerData, totalLikes){
-    likePriceBanner.lastElementChild.innerHTML = `${photographerData.price}€ / jour`;
-    updateBanner(totalLikes);
+function initPageBanners(photographerData, totalLikes){
+    footerBanner.lastElementChild.innerHTML = `${photographerData.price}€ / jour`;
+    contactFormHeader.innerHTML = `Contactez-moi ${photographerData.name}`;
+    updatePageBanners(totalLikes);
 };
 
-function updateBanner(totalLikes) {
-    likePriceBanner.firstElementChild.innerHTML = `${totalLikes} `;
+function updatePageBanners(totalLikes) {
+    footerBanner.firstElementChild.innerHTML = `${totalLikes} `;
 }
 
-export { initBanner, updateBanner };
+export { initPageBanners, updatePageBanners };

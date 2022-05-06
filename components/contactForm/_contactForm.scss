@@ -26,15 +26,20 @@
 .modal header {
     justify-content: space-between;
     width: 100%;
+    height: auto;
+    margin-bottom: 25px;
 
     img {
         cursor: pointer;
+        align-self: flex-start;
+        margin-top: 20px;
     }
 
     h2 {
-        font-size: 64px;
-        font-weight: normal;
-        text-align: center;
+        font-size: 4rem;
+        font-weight: 400;
+        text-align: left;
+        margin: 0;
     }
 }
 
@@ -49,12 +54,31 @@ form {
         font-size: 36px;
     }
 
-    div {
+    .formWrapper {
         display: flex;
         flex-direction: column;
         width: 100%;
         align-items: self-start;
         margin-bottom: 26px;
+    }
+
+    .formField{
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    .error{
+        input, 
+        textarea{
+            border: 4px solid $color-primary;
+        }
+        &::after{
+            display: inline-block;
+            color: $color-primary;
+            font-size: 1rem;
+            content: attr(error-message);
+            height: 15px;
+            min-width: 100px;
+        }
     }
 
     input,
@@ -63,6 +87,7 @@ form {
         height: 68px;
         border: none;
         border-radius: 5px;
+        font-size: 2rem;
     }
 
     textarea{

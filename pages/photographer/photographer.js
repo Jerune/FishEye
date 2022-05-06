@@ -2,7 +2,7 @@
 import PhotographerCard from '../../components/cards/photographerCard.js';
 import PhotoCard from '../../components/cards/photoCard.js';
 import { getPhotoData } from '../../components/tools.js';
-import { initBanner, updateBanner } from '../../components/banner/banner.js';
+import { initPageBanners, updatePageBanners } from '../../components/banner/banner.js';
 import VideoCard from '../../components/cards/videoCard.js';
 let totalLikes;
 
@@ -33,7 +33,7 @@ async function displayData(media, photographers) {
     });
 
     // Show total likes and daily rate for selected photographer in footer banner
-    initBanner(selectedPhotographer, totalLikes);
+    initPageBanners(selectedPhotographer, totalLikes);
 }
 
 async function init() {
@@ -50,7 +50,7 @@ async function init() {
  */
 function updateLikes(increment){
     totalLikes = increment ? totalLikes+1 : totalLikes-1;
-    updateBanner(totalLikes);
+    updatePageBanners(totalLikes);
 }
 init();
 

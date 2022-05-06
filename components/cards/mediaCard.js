@@ -21,21 +21,19 @@ export default class MediaCard {
 
     likeMedia() {
         this.isLiked = !this.isLiked;
-        this.buildTemplate();
+        this.buildMediaTemplate();
         updateLikes(this.isLiked);
     }
 
     buildMediaTemplate() {
-        let icon = `<i class="photo_card_likes" onclick="${removeSpace(this.title)}_likes.likeMedia()">${this.likes}&nbsp;</i>`
         this.DOM.innerHTML = `
         <a href="#">
             ${this.buildTemplate()}
         </a>
         <aside class="photo_card_title">
             <p>${this.title}</p>
-            <i class="photo_card_likes" onclick="likeMedia()">${this.likes}&nbsp;</i>
+            <i class="photo_card_likes" onclick='likeMedia()'>${this.likes}&nbsp;</i>
         </aside>
         `;
-        expose(`${removeSpace(this.title)}_likes`, icon);
     }
 }

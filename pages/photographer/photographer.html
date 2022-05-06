@@ -31,22 +31,34 @@
     <div id="contact_modal">
 			<div class="modal">
 				<header>
-          <h2>Contactez-moi</h2>
-          <img src="../../assets/icons/close.svg" onclick="closeModal()" />
+          <h2 class="contactFormHeader">Contactez-moi</h2>
+          <img src="../../assets/icons/close.svg" onclick="closeModal('contact_modal')" />
         </header>
 				<form>
-					<div>
-						<label>Prénom</label>
-						<input>
-            <label>Nom</label>
-						<input>
-            <label>Email</label>
-						<input>
-            <label>Votre message</label>
-						<textarea></textarea>
+					<div class="formWrapper">
+						<div class="formField">
+              <label for="first-name">Prénom</label>
+						  <input id="first-name" name="first-name" type="text" required>  
+            </div>
+            <div class="formField">
+              <label for="last-name">Nom</label>
+              <input id="last-name" name="last-name" type="text" required>
+            </div>
+            <div class="formField">
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" pattern=".+@.+\..+" required>
+            </div>
+            <div class="formField">
+              <label for="message">Votre message</label>
+						  <textarea id="message" name="message" type="text" required></textarea>
+            </div>
 					</div>
-          <button class="contact_button">Envoyer</button>
+          <button class="contact_button" onclick="return validateForm()">Envoyer</button>
 				</form>
+			</div>
+		</div>
+    <div id="lightbox_modal">
+			<div class="modal">
 			</div>
 		</div>
 

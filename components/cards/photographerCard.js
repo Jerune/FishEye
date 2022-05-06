@@ -47,7 +47,7 @@ export default class PhotographerCard {
             <p class="photographer-header_location">${this.city}, ${this.country}</p>
             <p class="photographer-header_tagline">${this.tagline}</p>
         </div>
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+        <button class="contact_button" onclick="displayModal('contact_modal')">Contactez-moi</button>
         <img class="portrait" src='../../assets/photographers/${this.portrait}' alt="${this.name}">
         `;
     }
