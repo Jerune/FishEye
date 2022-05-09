@@ -1,10 +1,13 @@
 // Imports
 import PhotographerCard from '../../components/cards/photographerCard.js';
 import PhotoCard from '../../components/cards/photoCard.js';
-import { getPhotoData } from '../../components/tools.js';
+import { expose, getPhotoData } from '../../components/tools.js';
 import { initPageBanners, updatePageBanners } from '../../components/banner/banner.js';
 import VideoCard from '../../components/cards/videoCard.js';
+import { initLightbox } from '../../components/modals/lightbox.js';
 let totalLikes;
+
+expose("lightBox", initLightbox);
 
 // Displaying the data on the page
 async function displayData(media, photographers) {

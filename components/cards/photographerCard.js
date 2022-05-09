@@ -3,13 +3,9 @@ import { expose, removeSpace } from '../tools.js';
 export default class PhotographerCard {
     constructor(data, page, DOMtarget) {
         this.pageType = page;
-        this.name = data.name;
-        this.id = data.id;
-        this.city = data.city;
-        this.country = data.country;
-        this.tagline = data.tagline;
-        this.price = data.price;
-        this.portrait = data.portrait;
+        for (const [key, value] of Object.entries(data)) {
+            this[key]=value;
+        }
         if(this.pageType === 'accueil'){
             this.DOM = document.createElement('article');
             this.DOM.className = 'photographer_card';

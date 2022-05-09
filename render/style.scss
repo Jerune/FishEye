@@ -4,10 +4,10 @@
 @import "../sass/utils/typography.scss"; 
 
 // Components
-@import "../components/contactForm/contactForm.scss";
+@import "../components/modals/contactForm.scss";
+@import "../components/modals/lightbox.scss";
 @import "../components/header/header.scss";
 @import "../components/footer/footer.scss";
-@import "../components/lightbox/lightbox.scss";
 
 // Pages
 @import "../pages/accueil/accueil.scss";
