@@ -10,7 +10,7 @@ export default class VideoCard extends MediaCard {
     buildTemplate() {
         return `
     <video height="300">
-        <source src="/assets/videos/${this.videoName}" type="video/mp4" control="false">
+        <source src="/assets/videos/${this.videoName}" type="video/mp4">
     </video>
     `;
     }

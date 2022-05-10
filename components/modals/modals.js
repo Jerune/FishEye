@@ -2,7 +2,7 @@ import { expose } from '../tools.js';
 
 function displayModal(elementID) {
     const modal = document.getElementById(elementID);
-    modal.style.display = 'block';
+    modal.style.display = 'flex';
 }
 
 function closeModal(elementID) {

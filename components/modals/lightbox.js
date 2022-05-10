@@ -1,10 +1,11 @@
-import { displayModal, closeModal } from './modals.js';
+import { displayModal } from './modals.js';
 import { expose } from '../tools.js';
 
 // Variables
 let mediaList;
 let mediaIndex;
-const lightboxModal = document.querySelector('#lightbox_modal');
+let currentElement;
+const carousel = document.querySelector('.carousel');
 
 // Functions
 function initLightbox(mediaName) {
@@ -27,91 +28,94 @@ function initLightbox(mediaName) {
         mediaToAdd.title = media.querySelector('.photo_card_title_section_title').textContent;
         if (mediaToAdd.url.includes(mediaName)) { mediaToAdd.isCurrent = true; } ;
         mediaList.push(mediaToAdd);
-        console.log(mediaToAdd);
     }
+
+    toggleCurrentMedia();
     displayModal('lightbox_modal');
 }
 
-// function toggleCurrentMedia(mediaName){
-//     mediaList.forEach(mediaItem => {
-//         if(mediaItem.isCurrent){
-//             mediaIndex = mediaList.indexOf(mediaItem);
-//         }
-//     });
-// }
-
-function buildLightbox() {
-    const mediaContainer = document.createElement('div');
-    mediaContainer.classList.add('carousel-item');
-    mediaContainer.innerHTML = `
-
-
-        <div class="caroussel-title">
-            <p>${this.title}</p>
-        </div>
-    `;
-    
-    lightboxModal.appendChild(mediaContainer);
-
+function toggleCurrentMedia(){
+    mediaIndex = 0;
+    currentElement = {};
+    mediaList.forEach(mediaItem => {
+        if(mediaItem.isCurrent){
+            mediaIndex = mediaList.indexOf(mediaItem);
+            currentElement = mediaItem;
+        }  
+    })
+    buildLightbox();
 }
 
+function switchSlide(direction){
+    if (direction === 'previous'){
+        mediaList[mediaIndex-1].isCurrent = true;
+        mediaList[mediaIndex].isCurrent = false;
+        mediaIndex = mediaIndex-1;
+    } else if (direction === 'next'){
+        mediaList[mediaIndex+1].isCurrent = true;
+        mediaList[mediaIndex].isCurrent = false;
+        mediaIndex = mediaIndex+1;
+    } 
 
-// function goToNextSlide() {
-//     if (currentItemPosition + 1 >= $carouselItems.length) {
+    toggleCurrentMedia();
+}
 
-//         const lastItem = `.item-${currentItemPosition}`;
+function insertMedia(){
+    if (currentElement.type === 'image'){
+        return `<img src="${currentElement.url}" alt='${currentElement.title}' />`
+    } else{
+        return `
+        <video controls>
+            <source src="${currentElement.url}" type="video/mp4" control="true">
+        </video>`
+    }
+}
 
-//         currentItemPosition = 0;
-//         const currentItem = `.item-${currentItemPosition}`;
+function buildLightbox() {
+    carousel.innerHTML = `
+        ${buildMediaNavigation('previous')} 
+        <div class="carousel_data">
+            ${insertMedia()}
+            <p>${currentElement.title}</p>
+        </div>
+        ${buildMediaNavigation('next')}
+        <img class="close" src="../../assets/icons/close-red.svg" onclick="closeModal('lightbox_modal')" />
+    `;
 
-//         setNodeAttributes(lastItem, currentItem);
-//     } else {
-//         currentItemPosition += 1;
-//         const lastItem = `.item-${currentItemPosition - 1}`;
-//         const currentItem = `.item-${currentItemPosition}`;
+};
 
-//         setNodeAttributes(lastItem, currentItem);
-//     }
+function buildMediaNavigation(direction) {
+    if (direction === 'previous'){
+        if (mediaIndex > 0){
+            return `
+            <div role="button" class="carousel_previous" onclick="switchSlide('previous')">
+                <i aria-hidden="true" class="fa-solid fa-angle-left""></i>
+                <p class="sr-only">Previous</p>
+            </div>
+            `;
+        } else {
+            return `
+            <div aria-hidden="true" class="carousel_previous">
+            </div>
+            `;
+        }
+    } else if (direction === 'next' && mediaIndex < mediaList.length-1){
+        return `
+        <div role="button" class="carousel_next" onclick="switchSlide('next')">
+            <i aria-hidden="true" class="fa-solid fa-angle-right""></i>
+            <p class="sr-only">Next</p>
+        </div>
+        `;
+    } else if (direction === 'next' && mediaIndex == mediaList.length-1){
+        return `
+        <div aria-hidden="true" class="carousel_next">
+        </div>
+        `;
+    } else{
+        return '';
+    }
+};
 
-//     <div role="button" class="controls controls-right">
-//     <span class="img next-image">
-//         <i aria-hidden="true" class="fa fa-arrow-circle-right"></i>
-//     </span>
-//     <p class="sr-only">Next</p>
-//     </div>  
-// };
-
-// function goToPreviousSlide() {
-//     if (currentItemPosition - 1 >= 0) {
-//         currentItemPosition -= 1;
-//         const currentItem = `.item-${currentItemPosition}`;
-//         const lastItem = `.item-${currentItemPosition + 1}`;
-
-//         setNodeAttributes(lastItem, currentItem);
-//     } else {
-//         const lastItem = `.item-${currentItemPosition}`;
-
-//         currentItemPosition = 2;
-//         const currentItem = `.item-${currentItemPosition}`;
-
-//         setNodeAttributes(lastItem, currentItem);
-//     }
-
-//     <div role="button" class="controls controls-right">
-//     <span class="img next-image">
-//         <i aria-hidden="true" class="fa fa-arrow-circle-right"></i>
-//     </span>
-//     <p class="sr-only">Next</p>
-//     </div>
-// };
-
-
-// const setNodeAttributes = (lastItem, currentItem) => {
-//     $(lastItem).css('display', 'none');
-//     $(currentItem).css('display', 'block');
-//     $(lastItem).attr('aria-hidden', 'true');
-//     $(currentItem).attr('aria-hidden', 'false');
-// };
 
 // document.onkeydown( (key) => {
 //     const keyCode = key.keyCode ? key.keyCode : key.which;
@@ -125,5 +129,8 @@ function buildLightbox() {
 
 expose('initLightbox', initLightbox);
 expose('buildLightbox', buildLightbox);
+expose('toggleCurrentMedia', toggleCurrentMedia);
+expose('switchSlide', switchSlide);
+expose('buildMediaNavigation', buildMediaNavigation);
 
 export { initLightbox, buildLightbox };
