@@ -1,4 +1,4 @@
-import { displayModal } from './modals.js';
+import { closeModal, displayModal } from './modals.js';
 import { expose } from '../tools.js';
 
 // Variables
@@ -117,15 +117,19 @@ function buildMediaNavigation(direction) {
 };
 
 
-// document.onkeydown( (key) => {
-//     const keyCode = key.keyCode ? key.keyCode : key.which;
-
-//     if (keyCode === 39) {
-//         goToNextSlide();
-//     } else if (keyCode === 37) {
-//         goToPreviousSlide();
-//     }
-// });
+document.addEventListener('keydown', (event) => {
+    if (event.code === 'ArrowRight'){
+        if (mediaIndex < mediaList.length-1){
+            switchSlide('next');
+        }
+    } else if (event.code === 'ArrowLeft'){
+        if (mediaIndex > 0){
+            switchSlide('previous');
+        }
+    } else if (event.code === 'Escape'){
+        closeModal('lightbox_modal');
+    }
+});
 
 expose('initLightbox', initLightbox);
 expose('buildLightbox', buildLightbox);
