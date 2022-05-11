@@ -4,27 +4,19 @@ import PhotoCard from '../../components/cards/photoCard.js';
 import { expose, getPhotoData } from '../../components/tools.js';
 import { initPageBanners, updatePageBanners } from '../../components/banner/banner.js';
 import VideoCard from '../../components/cards/videoCard.js';
-import { initLightbox } from '../../components/modals/lightbox.js';
-let totalLikes;
 
-expose("lightBox", initLightbox);
+// DOM
+let totalLikes;
+const photoOverviewSection = document.querySelector('.photo-overview');
+const photographerHeader = document.querySelector('.photographer-header');
+const urlSearchQuery = location.search.slice(1);
 
 // Displaying the data on the page
-async function displayData(media, photographers) {
-    
-    const photoOverviewSection = document.querySelector('.photo-overview');
-    const photographerHeader = document.querySelector('.photographer-header');
-    const urlSearchQuery = location.search.slice(1);
-    
+async function displayData(photographers) {
+
     // Show images & videos for selected photographer
     totalLikes = 0;
-    media.forEach(photo => {
-        if (urlSearchQuery == photo.photographerId) {
-            if (photo.image) new PhotoCard(photo, photoOverviewSection);
-            else new VideoCard(photo, photoOverviewSection)
-            totalLikes += photo.likes;
-        }
-    });
+    sortData('popularité');
     
     // Show data of selected photographer
     let selectedPhotographer;
@@ -39,9 +31,20 @@ async function displayData(media, photographers) {
     initPageBanners(selectedPhotographer, totalLikes);
 }
 
+function displayMedia(media){
+    photoOverviewSection.innerHTML = '';
+    media.forEach(photo => {
+        if (urlSearchQuery == photo.photographerId) {
+            if (photo.image) new PhotoCard(photo, photoOverviewSection);
+            else new VideoCard(photo, photoOverviewSection);
+            totalLikes += photo.likes;
+        }
+    });
+}
+
 async function init() {
-    const { media, photographers } = await getPhotoData();
-    displayData(media, photographers);
+    const { photographers } = await getPhotoData();
+    displayData( photographers);
 }
 
 /**
@@ -57,4 +60,5 @@ function updateLikes(increment){
 }
 init();
 
+expose ('displayMedia', displayMedia);
 export { updateLikes };

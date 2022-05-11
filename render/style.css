@@ -409,6 +409,46 @@ header a {
   cursor: pointer;
 }
 
+.sort_list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  padding-top: 20px;
+  margin: 0 100px;
+  overflow: visible;
+}
+
+.sort_list label {
+  font-family: "DM Sans", sans-serif;
+  font-size: 1.125rem;
+  font-weight: 700;
+  margin-top: 10px;
+}
+
+.sort_list select {
+  font-family: "DM Sans", sans-serif;
+  font-size: 1.125rem;
+  font-weight: 700;
+  margin-left: 25px;
+  background-color: #901C1C;
+  width: 170px;
+  padding: 10px;
+  color: white;
+}
+
+.sort_list select option {
+  border-bottom: 1px solid white;
+  height: 55px;
+  padding: 12px 10px;
+}
+
+.sort_list select option:last-child {
+  border: 0;
+}
+
 .photo-overview {
   display: -webkit-box;
   display: -ms-flexbox;

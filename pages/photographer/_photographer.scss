@@ -46,6 +46,38 @@
     cursor: pointer;
 }
 
+.sort_list{
+    display: flex;
+    justify-content: flex-start;
+    padding-top: 20px;
+    margin:  0 100px;
+    overflow: visible;
+    label{
+        font-family: "DM Sans", sans-serif;
+        font-size: 1.125rem;
+        font-weight: 700;
+        margin-top: 10px;
+    }
+    select{
+        font-family: "DM Sans", sans-serif;
+        font-size: 1.125rem;
+        font-weight: 700;
+        margin-left: 25px;
+        background-color: $color-primary;
+        width: 170px;
+        padding: 10px;
+        color: white;
+        option{
+            border-bottom: 1px solid white;
+            height: 55px;
+            padding: 12px 10px;
+            &:last-child{
+                border: 0;
+            }
+        }
+    }
+}
+
 .photo-overview{
     display: flex;
     flex-wrap: wrap;

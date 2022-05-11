@@ -12,6 +12,7 @@
     <script src="../../components/modals/modals.js" type="module"></script>
     <script src="../../components/modals/contactForm.js" type="module"></script>
     <script src="../../components/modals/lightbox.js" type="module"></script>
+    <script src="../../components/sort/sort.js" type="module"></script>
     <script src="photographer.js" type="module"></script>
   </head>
   <body>
@@ -22,6 +23,14 @@
     </header>
     <main id="main">
       <section class="photographer-header">
+      </section>
+      <section class="sort_list">
+        <label for="sort">Trier par</label>
+        <select name="sort" id="sort">
+          <option value="Popularité">Popularité</option>
+          <option value="Date">Date</option>
+          <option value="Titre">Titre</option>
+        </select>
       </section>
       <section class="photo-overview">
       </section>
