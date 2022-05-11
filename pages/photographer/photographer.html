@@ -17,16 +17,16 @@
   </head>
   <body>
     <header>
-      <a href="/index.html" aria-label="Fisheye Home page">
-        <img src="../../assets/images/logo.png" class="logo" alt="Fisheye Home page" />
+      <a href="/index.html" aria-label="Fisheye page d'accueil">
+        <img src="../../assets/images/logo.png" class="logo" alt="" />
       </a>
     </header>
     <main id="main">
       <section class="photographer-header">
       </section>
       <section class="sort_list">
-        <label for="sort">Trier par</label>
-        <select name="sort" id="sort">
+        <label id="label" for="sort">Trier par</label>
+        <select name="sort" id="sort" aria-labelledby="label">
           <option value="Popularité">Popularité</option>
           <option value="Date">Date</option>
           <option value="Titre">Titre</option>
@@ -39,7 +39,7 @@
       <p class="photo_card_likes"></p>
       <p></p>
     </footer>
-    <div id="contact_modal">
+    <div aria-hidden="true" id="contact_modal" role=“dialog”>
 			<div class="modal">
 				<header>
           <h2 class="contactFormHeader">Contactez-moi</h2>
@@ -47,29 +47,29 @@
         </header>
 				<form>
 					<div class="formWrapper">
-						<div class="formField">
+						<div class="formField" role="group" aria-labelledby="first-name">
               <label for="first-name">Prénom</label>
-						  <input id="first-name" name="first-name" type="text" required>  
+						  <input id="first-name" name="first-name" type="text" aria-required=true required>  
             </div>
-            <div class="formField">
+            <div class="formField" role="group" aria-labelledby="last-name">
               <label for="last-name">Nom</label>
-              <input id="last-name" name="last-name" type="text" required>
+              <input id="last-name" name="last-name" type="text" aria-required=true required>
             </div>
-            <div class="formField">
+            <div class="formField" role="group" aria-labelledby="email">
               <label for="email">Email</label>
-              <input id="email" name="email" type="email" pattern=".+@.+\..+" required>
+              <input id="email" name="email" type="email" pattern=".+@.+\..+" aria-required=true required>
             </div>
-            <div class="formField">
+            <div class="formField" role="group">
               <label for="message">Votre message</label>
-						  <textarea id="message" name="message" type="text" required></textarea>
+						  <textarea id="message" name="message" type="text" aria-required=true required></textarea>
             </div>
 					</div>
           <button class="contact_button" onclick="return validateForm()">Envoyer</button>
 				</form>
 			</div>
 		</div>
-    <div id="lightbox_modal">
-      <div class="carousel" aria-label="Media Gallery">
+    <div aria-hidden="true" id="lightbox_modal" role=“dialog”>
+      <div class="carousel" aria-label="Gallery du media">
       </div>
 		</div>
   </body>

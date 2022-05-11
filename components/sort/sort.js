@@ -21,7 +21,6 @@ async function sortInit(){
 // Function
 function sortData(type){
     if (type === 'titre'){
-        console.log('passed title');
         sortedMedia = unsortedMedia.sort((a, b) => {
             let fa = a.title.toLowerCase(),
                 fb = b.title.toLowerCase();
@@ -34,14 +33,12 @@ function sortData(type){
             return 0;
         });  
     } else if (type === 'date'){
-        console.log('passed date');
         sortedMedia = unsortedMedia.sort((a, b) => {
             let da = new Date(a.date),
                 db = new Date(b.date);
             return da - db;
         });
     } else if (type === 'popularité'){
-        console.log('passed popularité');
         sortedMedia = unsortedMedia.sort((a, b) => {
             return b.likes - a.likes;
         });

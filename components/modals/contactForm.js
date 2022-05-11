@@ -14,10 +14,12 @@ function validateForm(){
     for (let i = 0; i < allFormFields.length; i++){
         if (allFormFields[i].checkValidity()){
             allFormFields[i].parentElement.classList.remove('error');
+            allFormFields[i].setAttribute('aria-invalid','false');
             let attribute = allFormFields[i].getAttribute('name');
             userData[attribute] = allFormFields[i].value;
         } else {
             allFormFields[i].parentElement.classList.add('error');
+            allFormFields[i].setAttribute('aria-invalid','true');
             allFormFields[i].parentElement.setAttribute('error-message', 'Veuillez remplir ce champ correctement.');
         }
     }

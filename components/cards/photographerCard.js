@@ -27,12 +27,12 @@ export default class PhotographerCard {
     buildHomeTemplate() {
         this.DOM.innerHTML = `
         <a href="/pages/photographer/photographer.html?${this.id}" aria-label="${this.name}">
-            <img class="portrait" src='assets/photographers/${this.portrait}' alt="">
-            <h2>${this.name}</h2>
+            <img class="portrait" src='assets/photographers/${this.portrait}' alt="Portrait ${this.name}" aria-hidden="true">
+            <h2 aria-hidden="true">${this.name}</h2>
         </a>
-        <p class="photographer_card_location">${this.city}, ${this.country}</p>
-        <p class="photographer_card_tagline">${this.tagline}</p>
-        <p class="photographer_card_daily-rate">${this.price}€/jour</p>
+        <p class="photographer_card_location" aria-label="endroit">${this.city}, ${this.country}</p>
+        <p class="photographer_card_tagline" aria-label="quote">${this.tagline}</p>
+        <p class="photographer_card_daily-rate" aria-label="prix par jour">${this.price}€/jour</p>
     `;
     }
 

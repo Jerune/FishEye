@@ -83,6 +83,9 @@
     flex-wrap: wrap;
     justify-content: space-between;
     margin: 50px 100px;
+    &:last-child{
+        align-self: flex-start;
+    }
 }
 
 .photo_card{
@@ -112,11 +115,12 @@
         justify-content: space-between;
         align-items: center;
         margin: 10px 0 30px 0;
+        max-width: 350px;
         &_title{
             margin: 0;
             text-overflow: ellipsis;
             overflow: hidden; 
-            width: 295px; 
+            width: 288px; 
             white-space: nowrap;
         }
     }
