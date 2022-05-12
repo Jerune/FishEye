@@ -14,9 +14,6 @@ export default class MediaCard {
         expose(this.cardName, this);
     }
 
-    /**
-     * fonction remplie par la method du même nom dans l'enfant
-     */
     buildTemplate(){}
 
     likeMedia() {
