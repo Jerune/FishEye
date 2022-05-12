@@ -21,7 +21,7 @@
         <img src="../../assets/images/logo.png" class="logo" alt="" />
       </a>
     </header>
-    <main id="main">
+    <main id="main" role="main">
       <section class="photographer-header">
       </section>
       <section class="sort_list">
@@ -34,43 +34,43 @@
       </section>
       <section class="photo-overview">
       </section>
+      <div aria-hidden="true" aria-modal="false" id="contact_modal" role="dialog" aria-label="formulaire de contact">
+        <div class="modal">
+          <header>
+            <h2 class="contactFormHeader">Contactez-moi</h2>
+            <img src="../../assets/icons/close.svg" onclick="closeModal('contact_modal')" alt="Ferme formulaire de contact"/>
+          </header>
+          <form>
+            <div class="formWrapper">
+              <div class="formField" role="group" aria-labelledby="first-name">
+                <label for="first-name">Prénom</label>
+                <input id="first-name" name="first-name" type="text" aria-required=true required>  
+              </div>
+              <div class="formField" role="group" aria-labelledby="last-name">
+                <label for="last-name">Nom</label>
+                <input id="last-name" name="last-name" type="text" aria-required=true required>
+              </div>
+              <div class="formField" role="group" aria-labelledby="email">
+                <label for="email">Email</label>
+                <input id="email" name="email" type="email" pattern=".+@.+\..+" aria-required=true required>
+              </div>
+              <div class="formField" role="group">
+                <label for="message">Votre message</label>
+                <textarea id="message" name="message" type="text" aria-required=true required></textarea>
+              </div>
+            </div>
+            <button class="contact_button" onclick="return validateForm()">Envoyer</button>
+          </form>
+        </div>
+      </div>
+      <div aria-hidden="true" id="lightbox_modal" role="dialog" aria-label="gallerie photo et video" aria-modal="false">
+        <div class="carousel" role="region" aria-roledescription="vue zoomé" >
+        </div>
+      </div>
     </main>
     <footer class="likes_price_banner">
       <p class="photo_card_likes"></p>
       <p></p>
     </footer>
-    <div aria-hidden="true" id="contact_modal" role=“dialog”>
-			<div class="modal">
-				<header>
-          <h2 class="contactFormHeader">Contactez-moi</h2>
-          <img src="../../assets/icons/close.svg" onclick="closeModal('contact_modal')" />
-        </header>
-				<form>
-					<div class="formWrapper">
-						<div class="formField" role="group" aria-labelledby="first-name">
-              <label for="first-name">Prénom</label>
-						  <input id="first-name" name="first-name" type="text" aria-required=true required>  
-            </div>
-            <div class="formField" role="group" aria-labelledby="last-name">
-              <label for="last-name">Nom</label>
-              <input id="last-name" name="last-name" type="text" aria-required=true required>
-            </div>
-            <div class="formField" role="group" aria-labelledby="email">
-              <label for="email">Email</label>
-              <input id="email" name="email" type="email" pattern=".+@.+\..+" aria-required=true required>
-            </div>
-            <div class="formField" role="group">
-              <label for="message">Votre message</label>
-						  <textarea id="message" name="message" type="text" aria-required=true required></textarea>
-            </div>
-					</div>
-          <button class="contact_button" onclick="return validateForm()">Envoyer</button>
-				</form>
-			</div>
-		</div>
-    <div aria-hidden="true" id="lightbox_modal" role=“dialog”>
-      <div class="carousel" aria-label="Gallery du media">
-      </div>
-		</div>
   </body>
 </html>

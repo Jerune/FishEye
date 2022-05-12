@@ -30,18 +30,18 @@ export default class PhotographerCard {
             <img class="portrait" src='assets/photographers/${this.portrait}' alt="Portrait ${this.name}" aria-hidden="true">
             <h2 aria-hidden="true">${this.name}</h2>
         </a>
-        <p class="photographer_card_location" aria-label="endroit">${this.city}, ${this.country}</p>
-        <p class="photographer_card_tagline" aria-label="quote">${this.tagline}</p>
-        <p class="photographer_card_daily-rate" aria-label="prix par jour">${this.price}€/jour</p>
+        <p class="photographer_card_location" tabindex="0">${this.city}, ${this.country}</p>
+        <p class="photographer_card_tagline" tabindex="0">${this.tagline}</p>
+        <p class="photographer_card_daily-rate" tabindex="0">${this.price}€/jour</p>
     `;
     }
 
     buildPhotographerTemplate() {
         this.DOM.innerHTML = `
         <div>
-            <h1>${this.name}</h1>
-            <p class="photographer-header_location">${this.city}, ${this.country}</p>
-            <p class="photographer-header_tagline">${this.tagline}</p>
+            <h1 tabindex="0">${this.name}</h1>
+            <p class="photographer-header_location" tabindex="0">${this.city}, ${this.country}</p>
+            <p class="photographer-header_tagline" tabindex="0">${this.tagline}</p>
         </div>
         <button class="contact_button" onclick="displayModal('contact_modal')">Contactez-moi</button>
         <img class="portrait" src='../../assets/photographers/${this.portrait}' alt="${this.name}">

@@ -27,12 +27,12 @@ export default class MediaCard {
 
     buildMediaTemplate() {
         this.DOM.innerHTML = `
-        <a onclick="initLightbox('${this.imgName||this.videoName}')" aria-label="${this.title} vue zoomé">
+        <a tabindex="0" onclick="initLightbox('${this.imgName||this.videoName}')" role="link" aria-label="${this.title} vue zoomé">
             ${this.buildTemplate()}
         </a>
         <aside class="photo_card_title_section">
             <p class="photo_card_title_section_title">${this.title}</p>
-            <i class="photo_card_likes" onclick='${this.cardName}.likeMedia()' aria-label="likes">${this.countLikes()}&nbsp;</i>
+            <i class="photo_card_likes" onclick='${this.cardName}.likeMedia()' role="link" tabindex="0" aria-label="like">${this.countLikes()}&nbsp;</i>
         </aside>
         `;
     }

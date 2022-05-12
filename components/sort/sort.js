@@ -44,7 +44,6 @@ function sortData(type){
         });
     }
     displayMedia(sortedMedia);
-    console.log(sortedMedia);
 }
 
 expose ('sortData', sortData);

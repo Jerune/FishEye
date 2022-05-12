@@ -79,7 +79,7 @@ function buildLightbox() {
             <p>${currentElement.title}</p>
         </div>
         ${buildMediaNavigation('next')}
-        <img class="close" src="../../assets/icons/close-red.svg" onclick="closeModal('lightbox_modal')" />
+        <img class="close" src="../../assets/icons/close-red.svg" onclick="closeModal('lightbox_modal')" role="link" alt="ferme vue zoomé" />
     `;
 
 };
