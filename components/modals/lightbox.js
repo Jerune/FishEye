@@ -89,7 +89,7 @@ function buildMediaNavigation(direction) {
         if (mediaIndex > 0){
             return `
             <div role="button" class="carousel_previous" onclick="switchSlide('previous')">
-                <i aria-hidden="true" class="fa-solid fa-angle-left""></i>
+                <i aria-hidden="true" class="fa-solid fa-angle-left"></i>
                 <p class="sr-only">Previous</p>
             </div>
             `;
@@ -102,7 +102,7 @@ function buildMediaNavigation(direction) {
     } else if (direction === 'next' && mediaIndex < mediaList.length-1){
         return `
         <div role="button" class="carousel_next" onclick="switchSlide('next')">
-            <i aria-hidden="true" class="fa-solid fa-angle-right""></i>
+            <i aria-hidden="true" class="fa-solid fa-angle-right"></i>
             <p class="sr-only">Next</p>
         </div>
         `;

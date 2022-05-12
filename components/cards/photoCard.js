@@ -16,12 +16,16 @@ export default class PhotoCard extends MediaCard{
 
     buildTemplate() {
         return `
-            <img src="/assets/photos/thumbs/${this.imgName}" ${this.addClass()} alt="" />
+            <img src="/assets/photos/thumbs/${this.imgName}" ${this.addClass()} />
         `;
     }
 
     addClass(){
-        if (!this.#list.includes(this.imgName)) return;
-        return 'class="top"';
+        if (this.#list.includes(this.imgName)){
+            return 'class="top" alt=""';
+        } else{
+            return 'alt=""';
+        }
+        
     }
 }
