@@ -1,53 +1,61 @@
 import { expose } from '../tools.js';
 
-//DOM
-const header = document.getElementsByTagName('header')[0];
-const footer = document.getElementsByTagName('footer')[0];
-const photographerHeader = document.querySelector('.photographer-header');
-const sortSelect = document.querySelector('#sort');
-const photoOverview = document.querySelector('.photo-overview');
+const focusableElements = 'button, a, input, select, textarea, [tabindex]:not([tabindex="-1"])';
+const tabindexElements = '[tabindex="-1"]';
 
 function displayModal(elementID) {
     const modal = document.getElementById(elementID);
-    const pageLinks = Array.from(document.getElementsByTagName('a'));
-    modal.focus();
+    const focusableContent = modal.querySelectorAll(focusableElements);
+    const firstFocusableElement = modal.querySelectorAll(focusableElements)[0]; 
+    
+    hideGeneralPageData(elementID);
+
     modal.style.display = 'flex';
     modal.setAttribute('aria-modal', 'true');
     modal.setAttribute('aria-hidden', 'false');
-    Array.from(modal.children).forEach(element => {
+    focusableContent.forEach(element => {
         element.setAttribute('tabindex', '0');
+        element.setAttribute('aria-hidden', 'false');
     });
-    header.setAttribute('aria-hidden', 'true');
-    footer.setAttribute('aria-hidden', 'true');
-    pageLinks.forEach(link => {
-        link.setAttribute('tabindex', '-1');
-    });
-    photographerHeader.setAttribute('tabindex', '-1');
-    photographerHeader.setAttribute('aria-hidden', 'true');
-    sortSelect.setAttribute('tabindex', '-1');
-    sortSelect.setAttribute('aria-hidden', 'true');
-    photoOverview.setAttribute('tabindex', '-1');
-    photoOverview.setAttribute('aria-hidden', 'true');
+
+    firstFocusableElement.focus();
 }
 
 function closeModal(elementID) {
     const modal = document.getElementById(elementID);
-    const pageLinks = Array.from(document.getElementsByTagName('a'));
+    const focusableContent = document.querySelectorAll(focusableElements);
+    const tabindexContent = document.querySelectorAll(tabindexElements);
     modal.style.display = 'none';
     modal.setAttribute('tabindex', '-1');
     modal.setAttribute('aria-modal', 'false');
     modal.setAttribute('aria-hidden', 'true');
-    header.setAttribute('aria-hidden', 'false');
-    footer.setAttribute('aria-hidden', 'false');
-    Array.from(modal.children).forEach(element => {
-        element.removeAttribute('tabindex');
+    
+    focusableContent.forEach(element => {
+        element.removeAttribute('aria-hidden');
     });
-    pageLinks.forEach(link => {
-        link.setAttribute('tabindex', '0');
+
+    tabindexContent.forEach(element => {
+        element.setAttribute('tabindex', '0');
     });
-    photographerHeader.removeAttribute('tabindex');
-    sortSelect.removeAttribute('tabindex');
-    photoOverview.removeAttribute('tabindex');
+    
+    hideModalData(elementID);
+}
+
+function hideModalData(elementID){
+    const modal = document.getElementById(elementID);
+    const focusableContentToHide = modal.querySelectorAll(focusableElements);
+    focusableContentToHide.forEach(element => {
+        element.setAttribute('tabindex', '-1');
+        element.setAttribute('aria-hidden', 'true');
+    });
+}
+
+function hideGeneralPageData(){
+    const allFocusableContent = document.querySelectorAll(focusableElements);
+    allFocusableContent.forEach(element => {
+        element.setAttribute('tabindex', '-1');
+        element.setAttribute('aria-hidden', 'true');
+    });
 }
 
 // Expose & Export

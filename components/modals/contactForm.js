@@ -36,6 +36,12 @@ function validateForm(){
     }
 }
 
+document.addEventListener('keydown', (event) => {
+    if (event.code === 'Escape'){
+        closeModal('contact_modal');
+    }
+});
+
 // Expose & Export
 expose('validateForm', validateForm);
 

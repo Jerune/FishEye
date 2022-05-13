@@ -24,6 +24,10 @@ img.portrait {
      object-fit: cover;
 }
 
+.sr-only {
+  display: none;
+}
+
 #contact_modal {
   display: none;
   position: fixed;

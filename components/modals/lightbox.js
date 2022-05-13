@@ -62,10 +62,10 @@ function switchSlide(direction){
 
 function insertMedia(){
     if (currentElement.type === 'image'){
-        return `<img src="${currentElement.url}" alt='${currentElement.title}' />`
+        return `<img src="${currentElement.url}" alt='${currentElement.title} vue zoomé' tabindex="0"/>`
     } else{
         return `
-        <video controls>
+        <video controls tabindex="0">
             <source src="${currentElement.url}" type="video/mp4" control="true">
         </video>`
     }
@@ -79,7 +79,7 @@ function buildLightbox() {
             <p>${currentElement.title}</p>
         </div>
         ${buildMediaNavigation('next')}
-        <img class="close" src="../../assets/icons/close-red.svg" onclick="closeModal('lightbox_modal')" role="link" alt="ferme vue zoomé" />
+        <img class="close" src="../../assets/icons/close-red.svg" onclick="closeModal('lightbox_modal')" tabindex="0" role="link" alt="ferme vue zoomé" />
     `;
 
 };
@@ -88,9 +88,9 @@ function buildMediaNavigation(direction) {
     if (direction === 'previous'){
         if (mediaIndex > 0){
             return `
-            <div role="button" class="carousel_previous" onclick="switchSlide('previous')">
+            <div role="button" class="carousel_previous" tabindex="0" aria-labelledby="left" onclick="switchSlide('previous')">
                 <i aria-hidden="true" class="fa-solid fa-angle-left"></i>
-                <p class="sr-only">Previous</p>
+                <p id="left" class="sr-only">Previous</p>
             </div>
             `;
         } else {
@@ -101,9 +101,9 @@ function buildMediaNavigation(direction) {
         }
     } else if (direction === 'next' && mediaIndex < mediaList.length-1){
         return `
-        <div role="button" class="carousel_next" onclick="switchSlide('next')">
+        <div role="button" class="carousel_next" tabindex="0" aria-labelledby="right" onclick="switchSlide('next')">
             <i aria-hidden="true" class="fa-solid fa-angle-right"></i>
-            <p class="sr-only">Next</p>
+            <p id="right" class="sr-only" aria-hidden="false">Next</p>
         </div>
         `;
     } else if (direction === 'next' && mediaIndex == mediaList.length-1){
