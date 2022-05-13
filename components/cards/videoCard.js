@@ -1,4 +1,4 @@
-import MediaCard from "./mediaCard.js";
+import MediaCard from './mediaCard.js';
 
 export default class VideoCard extends MediaCard {
     //title;
@@ -9,9 +9,9 @@ export default class VideoCard extends MediaCard {
 
     buildTemplate() {
         return `
-    <video height="300">
-        <source src="/assets/videos/${this.videoName}" type="video/mp4">
-    </video>
-    `;
+        <video height="300">
+            <source src="/assets/videos/${this.videoName}" type="video/mp4">
+        </video>
+        `;
     }
-};
+}

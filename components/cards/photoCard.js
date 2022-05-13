@@ -1,4 +1,4 @@
-import MediaCard from "./mediaCard.js";
+import MediaCard from './mediaCard.js';
 
 export default class PhotoCard extends MediaCard{
     #list=[
@@ -12,7 +12,7 @@ export default class PhotoCard extends MediaCard{
     constructor(data, DOMtarget) {
         super({...data, imgName:data.image}, DOMtarget);
         this.buildMediaTemplate();
-    }
+    }  
 
     buildTemplate() {
         return `

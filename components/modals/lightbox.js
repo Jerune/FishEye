@@ -26,7 +26,7 @@ function initLightbox(mediaName) {
             mediaToAdd.url = mediaElm.querySelector('source').src;
         }
         mediaToAdd.title = media.querySelector('.photo_card_title_section_title').textContent;
-        if (mediaToAdd.url.includes(mediaName)) { mediaToAdd.isCurrent = true; } ;
+        if (mediaToAdd.url.includes(mediaName)) { mediaToAdd.isCurrent = true; } 
         mediaList.push(mediaToAdd);
     }
 
@@ -42,7 +42,7 @@ function toggleCurrentMedia(){
             mediaIndex = mediaList.indexOf(mediaItem);
             currentElement = mediaItem;
         }  
-    })
+    });
     buildLightbox();
 }
 
@@ -62,12 +62,12 @@ function switchSlide(direction){
 
 function insertMedia(){
     if (currentElement.type === 'image'){
-        return `<img src="${currentElement.url}" alt='${currentElement.title} vue zoomé' tabindex="0"/>`
+        return `<img src="${currentElement.url}" alt='${currentElement.title} vue zoomé' tabindex="0"/>`;
     } else{
         return `
         <video controls tabindex="0">
             <source src="${currentElement.url}" type="video/mp4" control="true">
-        </video>`
+        </video>`;
     }
 }
 
@@ -82,7 +82,7 @@ function buildLightbox() {
         <img class="close" src="../../assets/icons/close-red.svg" onclick="closeModal('lightbox_modal')" tabindex="0" role="link" alt="ferme vue zoomé" />
     `;
 
-};
+}
 
 function buildMediaNavigation(direction) {
     if (direction === 'previous'){
@@ -114,7 +114,7 @@ function buildMediaNavigation(direction) {
     } else{
         return '';
     }
-};
+}
 
 
 document.addEventListener('keydown', (event) => {

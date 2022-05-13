@@ -62,4 +62,4 @@ function hideGeneralPageData(){
 expose('displayModal', displayModal);
 expose('closeModal', closeModal);
 
-export { displayModal, closeModal }
+export { displayModal, closeModal };

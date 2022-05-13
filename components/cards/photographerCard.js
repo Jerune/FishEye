@@ -6,12 +6,13 @@ export default class PhotographerCard {
         for (const [key, value] of Object.entries(data)) {
             this[key]=value;
         }
+        
         if(this.pageType === 'accueil'){
             this.DOM = document.createElement('article');
             this.DOM.className = 'photographer_card';
         } else if (this.pageType === 'photographer-detail'){
             this.DOM = DOMtarget;
-        }
+        }      
         expose('card_' + removeSpace(this.name), this);
         if(this.pageType === 'accueil'){
             this.buildHomeTemplate();
