@@ -4,7 +4,6 @@ import { expose } from '../tools.js';
 const formInputFields = Array.from(document.getElementsByTagName('input'));
 const formTextarea = Array.from(document.getElementsByTagName('textarea'));
 const allFormFields = formInputFields.concat(formTextarea);
-console.log(allFormFields);
 
 function readyToSubmit(Array) {
     return Array.every(val => val.checkValidity() === true);

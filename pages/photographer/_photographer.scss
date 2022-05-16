@@ -50,6 +50,7 @@
     display: flex;
     justify-content: flex-start;
     padding-top: 20px;
+    height: 68px;
     margin:  0 100px;
     overflow: visible;
     label{
@@ -76,6 +77,42 @@
             }
         }
     }
+    .select-menu{
+        margin-left: 25px;
+        background-color: $color-primary;
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        overflow: visible;
+        height: fit-content;
+        position: relative;
+        z-index: 1;
+        button{
+            font-family: "DM Sans", sans-serif;
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: white;
+            border: none;
+            border-bottom: 1px solid white;
+            background-color: $color-primary;
+            height: 55px;
+            width: 150px;
+            padding: 12px 10px;
+            text-align: left;
+            &:last-child{
+                border: 0;
+            }
+        }
+        i{
+            position: absolute;
+            top: 28px;
+            right: 20px;
+            color: white;
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+    }
 }
 
 .photo-overview{
@@ -83,15 +120,16 @@
     flex-wrap: wrap;
     justify-content: space-between;
     margin: 50px 100px;
-    &:last-child{
-        align-self: flex-start;
-    }
 }
 
 .photo_card{
     font-size: 1.375rem; // 22px
     color: $color-primary;
     
+    &:last-child{
+        align-self: flex-start;
+    }
+
     a{
         display: flex;
         justify-content: center;

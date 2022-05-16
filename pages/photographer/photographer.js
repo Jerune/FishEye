@@ -4,6 +4,7 @@ import PhotoCard from '../../components/cards/photoCard.js';
 import { expose, getPhotoData } from '../../components/tools.js';
 import { initPageBanners, updatePageBanners } from '../../components/banner/banner.js';
 import VideoCard from '../../components/cards/videoCard.js';
+import { sortBy } from '../../components/sort/sort.js';
 
 // DOM
 let totalLikes;
@@ -16,7 +17,7 @@ async function displayData(photographers) {
 
     // Show images & videos for selected photographer
     totalLikes = 0;
-    sortData('popularité');
+    sortBy('popularité');
     
     // Show data of selected photographer
     let selectedPhotographer;
