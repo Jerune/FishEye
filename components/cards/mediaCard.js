@@ -1,3 +1,4 @@
+// Imports
 import { updateLikes } from '../../pages/photographer/photographer.js';
 import { expose, removeSpace } from '../tools.js';
 export default class MediaCard {

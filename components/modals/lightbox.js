@@ -1,3 +1,4 @@
+// Imports
 import { closeModal, displayModal } from './modals.js';
 import { expose } from '../tools.js';
 
@@ -116,7 +117,7 @@ function buildMediaNavigation(direction) {
     }
 }
 
-
+// Keyboard events
 document.addEventListener('keydown', (event) => {
     if (event.code === 'ArrowRight'){
         if (mediaIndex < mediaList.length-1){

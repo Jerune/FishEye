@@ -1,4 +1,4 @@
-// DOM Elements
+// DOM
 const footerBanner = document.querySelector('.likes_price_banner');
 const contactFormHeader = document.querySelector('.contactFormHeader');
 

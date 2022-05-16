@@ -1,8 +1,7 @@
 import PhotographerCard from '../../components/cards/photographerCard.js';
 import { getPhotoData } from '../../components/tools.js';
 
-
-
+// Functions
 async function displayData(photographers) {
     const photographersSection = document.querySelector('.photographer_section');
     photographers.forEach(photographer => {

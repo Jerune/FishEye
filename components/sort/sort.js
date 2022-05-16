@@ -1,6 +1,8 @@
+// Imports
 import { expose } from '../tools.js';
 import { getPhotoData } from '../../components/tools.js';
 
+// Variables
 let unsortedMedia; 
 let sortedMedia;
 let dropdownTarget;
@@ -9,13 +11,7 @@ let selectSimulator;
 //DOM
 const sortSelect = document.getElementById('sort');
 
-//Events
-/*sortSelect.addEventListener('change', () => {
-    const type = sortSelect.value.toLowerCase();
-    sortData(type);
-});*/
-
-
+// Functions
 async function sortInit(){
     const { media } = await getPhotoData();
     unsortedMedia = media;
@@ -27,7 +23,6 @@ function showDropdown(dropdown){
     dropdownTarget = dropdown;
     let html='<i class="fa-solid fa-angle-up" onclick="sortBy(\'popularité\')"></i>';
     for (const opt of dropdown.options){
-        console.log();
         html+=`<button onclick="sortBy('${opt.innerText.toLowerCase()}')">${opt.innerText}</button>`;
     }
     selectSimulator = document.createElement('div');
@@ -44,7 +39,7 @@ function sortBy(str){
     selectSimulator=null;
     displayMedia(sortData(str));
 }
-// Function
+
 function sortData(type){
     if (type === 'titre'){
         sortedMedia = unsortedMedia.sort((a, b) => {
@@ -69,7 +64,6 @@ function sortData(type){
             return b.likes - a.likes;
         });
     }
-    //displayMedia(sortedMedia);
     return sortedMedia;
 }
 

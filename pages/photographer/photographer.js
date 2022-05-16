@@ -48,13 +48,6 @@ async function init() {
     displayData( photographers);
 }
 
-/**
- * [updateLikes description]
- *
- * @param   {Boolean}  increment  [increment description]
- *
- * @return  {void}             [return description]
- */
 function updateLikes(increment){
     totalLikes = increment ? totalLikes+1 : totalLikes-1;
     updatePageBanners(totalLikes);

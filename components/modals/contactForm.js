@@ -1,6 +1,7 @@
+// Imports
 import { expose } from '../tools.js';
 
-// DOM Elements
+// DOM 
 const formInputFields = Array.from(document.getElementsByTagName('input'));
 const formTextarea = Array.from(document.getElementsByTagName('textarea'));
 const allFormFields = formInputFields.concat(formTextarea);
@@ -36,6 +37,7 @@ function validateForm(){
     }
 }
 
+// Keyboard events
 document.addEventListener('keydown', (event) => {
     if (event.code === 'Escape'){
         closeModal('contact_modal');
