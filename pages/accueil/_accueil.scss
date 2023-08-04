@@ -1,46 +1,66 @@
 .photographer_section {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 70px;
-    margin: 85px 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 85px 0;
+  width: 100%;
 
-    .photographer_card {
-        justify-self: center;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
+  @include for-phone-only {
+    width: 90%;
+    margin: 25px 5%;
+  }
 
-        p{
-            margin: 0;
-            line-height: 1.75;
-        }
+  .photographer_card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 40px;
+    flex-direction: column;
 
-        a{
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        
-        h2 {
-            color: $color-secondary;
-            font-size: 2.25rem;
-            font-weight: 100;
-            margin-bottom: 0;
-        }
-
-        &_location{
-            color: $color-primary;
-            font-size: 0.813rem; //13px
-        }
-
-        &_tagline{
-            font-size: 0.625rem; //10px
-        }
-
-        &_daily-rate{
-            color: #757575;
-            font-size: 0.563rem; //9px
-        }
+    @include for-phone-only {
+      width: 90%;
     }
+
+    @include for-tablet-portrait-up {
+      width: 50%;
+    }
+
+    @include for-desktop-up {
+      width: 33.33%;
+    }
+
+    p {
+      margin: 0;
+      line-height: 1.75;
+    }
+
+    a {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    h2 {
+      color: $color-secondary;
+      font-size: 2.25rem;
+      font-weight: 100;
+      margin-bottom: 0;
+    }
+
+    &_location {
+      color: $color-primary;
+      font-size: 0.813rem; //13px
+    }
+
+    &_tagline {
+      font-size: 0.625rem; //10px
+    }
+
+    &_daily-rate {
+      color: #757575;
+      font-size: 0.563rem; //9px
+    }
+  }
 }
