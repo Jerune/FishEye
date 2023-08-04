@@ -8,7 +8,7 @@ function displayModal(elementID) {
     const focusableContent = modal.querySelectorAll(focusableElements);
     const firstFocusableElement = modal.querySelectorAll(focusableElements)[0]; 
     
-    hideGeneralPageData(elementID);
+    hideGeneralPageData();
 
     modal.style.display = 'flex';
     modal.setAttribute('aria-modal', 'true');

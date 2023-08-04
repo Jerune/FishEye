@@ -46,5 +46,4 @@ document.addEventListener('keydown', (event) => {
 
 // Expose & Export
 expose('validateForm', validateForm);
-
 export { validateForm };
