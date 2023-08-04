@@ -1,20 +1,26 @@
-.likes_price_banner{
-    height: 70px;
-    min-width: 300px;
-    padding: 20px 30px;
-    background-color: $color-tertiary;
-    position: fixed;
-    font-size: 1.5rem;
-    right: 36px;
-    bottom: 0;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    p{
-        margin: 0;
-        font-weight: 500;
-        
-    }
+.likes_price_banner {
+  height: 70px;
+  min-width: 300px;
+  padding: 20px 30px;
+  background-color: $color-tertiary;
+  position: fixed;
+  font-size: 1.5rem;
+  right: 36px;
+  bottom: 0;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  @include for-phone-only {
+    width: 100%;
+    border-radius: 0%;
+    right: 0;
+  }
+
+  p {
+    margin: 0;
+    font-weight: 500;
+  }
 }
