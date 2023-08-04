@@ -1,96 +1,127 @@
 #contact_modal {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    height: 100%;
-    width: 100%;
-    padding-top: 70px;
-    overflow: auto;
-    background-color: rgba(196, 196, 196, 0.4);
+  display: none;
+  position: fixed;
+  justify-content: center;
+  align-items: flex-start;
+  z-index: 20;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  padding: 30px;
+  background-color: rgba(196, 196, 196, 0.4);
+  @include for-phone-only {
+    padding: 5%;
+  }
 }
 
 .modal {
-    border-radius: 5px;
-    background-color: #DB8876;
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    padding: 35px;
-    margin: auto;
+  border-radius: 5px;
+  background-color: #db8876;
+  position: relative;
+  width: 800px;
+  height: auto;
+  overflow: scroll;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 35px;
+  @include for-phone-only {
+    width: 100%;
+    padding: 10px;
+    justify-content: flex-start;
+  }
 }
 
 .modal header {
-    justify-content: space-between;
-    width: 100%;
-    height: auto;
-    margin-bottom: 25px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  height: auto;
+  margin-bottom: 25px;
 
-    img {
-        cursor: pointer;
-        align-self: flex-start;
-        margin-top: 20px;
+  img {
+    width: 20px;
+    cursor: pointer;
+    align-self: flex-start;
+    @include for-phone-only {
+      padding-top: 10px;
     }
+  }
 
-    h2 {
-        font-size: 4rem;
-        font-weight: 400;
-        text-align: left;
-        margin: 0;
+  h2 {
+    font-size: 2.5rem;
+    font-weight: 400;
+    text-align: left;
+    margin: 0;
+    @include for-phone-only {
+      font-size: 2rem;
     }
+  }
 }
 
 form {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: flex-start;
+
+  label {
+    color: #312e2e;
+    font-size: 1.5rem;
+    @include for-phone-only {
+      font-size: 1rem;
+    }
+  }
+
+  .formWrapper {
     display: flex;
-    width: 100%;
     flex-direction: column;
-    align-items: flex-start;
+    width: 100%;
+    align-items: self-start;
+    margin-bottom: 26px;
+  }
 
-    label {
-        color: #312E2E;
-        font-size: 36px;
-    }
-
-    .formWrapper {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        align-items: self-start;
-        margin-bottom: 26px;
-    }
-
-    .formField{
-        width: 100%;
-        margin-bottom: 10px;
-    }
-    .error{
-        input, 
-        textarea{
-            border: 4px solid $color-primary;
-        }
-        &::after{
-            display: inline-block;
-            color: $color-primary;
-            font-size: 1rem;
-            content: attr(error-message);
-            height: 15px;
-            min-width: 100px;
-        }
-    }
-
+  .formField {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  .error {
     input,
     textarea {
-        width: 100%;
-        height: 68px;
-        border: none;
-        border-radius: 5px;
-        font-size: 2rem;
+      border: 4px solid $color-primary;
     }
+    &::after {
+      display: inline-block;
+      color: $color-primary;
+      font-size: 1rem;
+      content: attr(error-message);
+      height: 15px;
+      min-width: 100px;
+    }
+  }
 
-    textarea{
-        height: 170px;
+  input,
+  textarea {
+    width: 100%;
+    height: 40px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.5rem;
+    margin-top: 5px;
+    @include for-phone-only {
+      font-size: 1rem;
+      height: 2rem;
     }
+  }
+
+  textarea {
+    height: 170px;
+    @include for-phone-only {
+      font-size: 1rem;
+      height: 80px;
+    }
+  }
 }
