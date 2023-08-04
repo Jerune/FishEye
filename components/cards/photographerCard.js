@@ -39,13 +39,14 @@ export default class PhotographerCard {
 
     buildPhotographerTemplate() {
         this.DOM.innerHTML = `
-        <div>
+        <img class="portrait" src='../../assets/photographers/${this.portrait}' alt="${this.name}">
+        <div class="photographer_details">
             <h1 tabindex="0">${this.name}</h1>
             <p class="photographer-header_location" tabindex="0">${this.city}, ${this.country}</p>
             <p class="photographer-header_tagline" tabindex="0">${this.tagline}</p>
         </div>
         <button class="contact_button" onclick="displayModal('contact_modal')">Contactez-moi</button>
-        <img class="portrait" src='../../assets/photographers/${this.portrait}' alt="${this.name}">
+        
         `;
     }
 }
