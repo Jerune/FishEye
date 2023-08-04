@@ -1,6 +1,34 @@
 // Colors
-$color-primary: #901C1C;
-$color-secondary: #D3573C;
-$color-tertiary: #DB8876;
+$color-primary: #901c1c;
+$color-secondary: #d3573c;
+$color-tertiary: #db8876;
 $grayscale-text: #525252;
-$grayscale-background: #FAFAFA;
+$grayscale-background: #fafafa;
+
+// Responsive breakpoints
+
+@mixin for-phone-only {
+  @media (max-width: 680px) {
+    @content;
+  }
+}
+@mixin for-tablet-portrait-up {
+  @media (min-width: 600px) {
+    @content;
+  }
+}
+@mixin for-tablet-landscape-up {
+  @media (min-width: 900px) {
+    @content;
+  }
+}
+@mixin for-desktop-up {
+  @media (min-width: 1200px) {
+    @content;
+  }
+}
+@mixin for-big-desktop-up {
+  @media (min-width: 1800px) {
+    @content;
+  }
+}
